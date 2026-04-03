@@ -1,0 +1,34 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "(Windows) Launch",
+			"type": "cppvsdbg",
+			"request": "launch",
+			"program": "${input:GAME_INSTALL_EXE}",
+			"args": [],
+			"stopAtEntry": false,
+			"cwd": "${input:GAME_INSTALL_DIR}",
+			"environment": [],
+			"preLaunchTask": "copyPlugin",
+		},
+	],
+	"inputs": [
+		{
+			"id": "GAME_INSTALL_DIR",
+			"type": "command",
+			"command": "cmake.cacheVariable",
+			"args": {
+				"name": "GAME_INSTALL_DIR",
+			},
+		},
+		{
+			"id": "GAME_INSTALL_EXE",
+			"type": "command",
+			"command": "cmake.cacheVariable",
+			"args": {
+				"name": "GAME_INSTALL_EXE",
+			},
+		},
+	],
+}

@@ -1,0 +1,54 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "copyPlugin",
+			"command": "cp",
+			"args": [
+				"${input:BUILD_DIRECTORY}/${input:BUILD_TYPE}/${input:CMAKE_PROJECT_NAME}.dll",
+				"${input:GAME_INSTALL_DIR}reframework/plugins",
+			],
+			"dependsOn": "cmakeBuild"
+		},
+		{
+			"type": "cmake",
+			"label": "cmakeBuild",
+			"command": "build",
+			"targets": [
+				"ALL_BUILD"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "CMake template build task",
+		},
+	],
+	"inputs": [
+		{
+			"id": "BUILD_TYPE",
+			"type": "command",
+			"command": "cmake.buildType",
+		},
+		{
+			"id": "BUILD_DIRECTORY",
+			"type": "command",
+			"command": "cmake.buildDirectory",
+		},
+		{
+			"id": "CMAKE_PROJECT_NAME",
+			"type": "command",
+			"command": "cmake.cacheVariable",
+			"args": {
+				"name": "CMAKE_PROJECT_NAME",
+			},
+		},
+		{
+			"id": "GAME_INSTALL_DIR",
+			"type": "command",
+			"command": "cmake.cacheVariable",
+			"args": {
+				"name": "GAME_INSTALL_DIR",
+			},
+		},
+	],
+}
