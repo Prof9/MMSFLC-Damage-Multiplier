@@ -256,7 +256,7 @@ extern "C" __declspec(dllexport) bool reframework_plugin_initialize(const REFram
             assert(nameList != nullptr);
 
             // get menuTblOption.MenuNum
-            std::int32_t *menuNum_ptr = _menuTblOption->get_field<std::int32_t>("MenuNum", true);
+            std::int32_t *menuNum_ptr = _menuTblOption->get_field<std::int32_t>("MenuNum");
             assert(menuNum_ptr != nullptr);
             std::int32_t menuNum = *menuNum_ptr;
 
@@ -316,11 +316,6 @@ extern "C" __declspec(dllexport) bool reframework_plugin_initialize(const REFram
             // set menuTblOption.DamageDownName
             damageDownName->release();
             *damageDownName_ptr = newDamageDownName;
-
-            // set menuTblOption.DamageDownNum
-            std::int32_t *damageDownNum_ptr = _menuTblOption->get_field<std::int32_t>("DamageDownNum", true);
-            assert(damageDownNum_ptr != nullptr);
-            *damageDownNum_ptr = NEW_DAMAGE_DOWN_VALUES.size();
 
             // get menuTblOption.CursolMax
             reframework::API::ManagedObject **cursorMax_ptr = _menuTblOption->get_field<reframework::API::ManagedObject *>("CursolMax");
